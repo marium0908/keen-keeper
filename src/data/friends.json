@@ -1,0 +1,103 @@
+[
+  {
+    "id": 1,
+    "name": "Tom Baker",
+    "picture": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&h=400&auto=format&fit=crop",
+    "email": "tom.baker@example.com",
+    "days_since_contact": 2,
+    "status": "on-track",
+    "tags": ["College Friend", "Tech"],
+    "bio": "Old college roommate. Loves hiking and photography. We try to catch up every few weeks about new tech trends.",
+    "goal": 14,
+    "next_due_date": "2026-04-26"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Chen",
+    "picture": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&auto=format&fit=crop",
+    "email": "sarah.chen@example.com",
+    "days_since_contact": 1,
+    "status": "on-track",
+    "tags": ["Work", "Design"],
+    "bio": "Talented product designer. We worked together at the previous startup. Great for bouncing creative ideas off of.",
+    "goal": 7,
+    "next_due_date": "2026-04-20"
+  },
+  {
+    "id": 3,
+    "name": "Olivia Martinez",
+    "picture": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=400&h=400&auto=format&fit=crop",
+    "email": "olivia.m@example.com",
+    "days_since_contact": 15,
+    "status": "overdue",
+    "tags": ["Childhood", "Travel"],
+    "bio": "Friend since kindergarten. She's currently traveling through Southeast Asia. Need to check in on her latest adventures.",
+    "goal": 10,
+    "next_due_date": "2026-04-09"
+  },
+  {
+    "id": 4,
+    "name": "Aisha Patel",
+    "picture": "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=400&h=400&auto=format&fit=crop",
+    "email": "aisha.p@example.com",
+    "days_since_contact": 8,
+    "status": "almost due",
+    "tags": ["Reading Group", "Local"],
+    "bio": "Part of the local book club. Always has the best recommendations for historical fiction and mystery novels.",
+    "goal": 14,
+    "next_due_date": "2026-04-20"
+  },
+  {
+    "id": 5,
+    "name": "Marcus Johnson",
+    "picture": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&h=400&auto=format&fit=crop",
+    "email": "marcus.j@example.com",
+    "days_since_contact": 5,
+    "status": "on-track",
+    "tags": ["Gym Buddy", "Fitness"],
+    "bio": "Training partner for the upcoming marathon. Keeps me motivated on those early morning long runs.",
+    "goal": 7,
+    "next_due_date": "2026-04-16"
+  },
+  {
+    "id": 6,
+    "name": "Lisa Nakamura",
+    "picture": "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=400&h=400&auto=format&fit=crop",
+    "email": "lisa.n@example.com",
+    "days_since_contact": 3,
+    "status": "on-track",
+    "tags": ["Mentor", "Career"],
+    "bio": "Former manager and career mentor. Provides invaluable advice on leadership and professional growth.",
+    "goal": 30,
+    "next_due_date": "2026-05-11"
+  },
+  {
+    "id": 7,
+    "name": "Ryan O'Brian",
+    "picture": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=400&auto=format&fit=crop",
+    "email": "ryan.ob@example.com",
+    "days_since_contact": 12,
+    "status": "almost due",
+    "tags": ["Music", "Guitar"],
+    "bio": "Fellow musician. We used to jam together in a garage band. He's now producing his own electronic music.",
+    "goal": 14,
+    "next_due_date": "2026-04-16"
+  },
+  {
+    "id": 8,
+    "name": "Jessica Wu",
+    "picture": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400&h=400&auto=format&fit=crop",
+    "email": "jessica.wu@example.com",
+    "days_since_contact": 30,
+    "status": "overdue",
+    "tags": ["Neighbor", "Community"],
+    "bio": "Next-door neighbor. Always helpful with gardening tips and occasional pet sitting. Long overdue for a coffee catch-up.",
+    "goal": 14,
+    "next_due_date": "2026-03-29"
+  }
+]
+
+
+
+
+
