@@ -22,7 +22,7 @@ const Navbar = () => {
         {/* Logo Section */}
         <Link to="/" className="flex items-center gap-2">
           <img 
-            src="/src/assets/logo.png" 
+            src="/assets/logo.png" 
             alt="KeenKeeper Logo" 
             className="h-10 w-auto object-contain"
             referrerPolicy="no-referrer"
