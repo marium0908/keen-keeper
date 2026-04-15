@@ -21,10 +21,12 @@ export default function NotFound() {
       </div>
 
       {/* Button to take the user back to safety */}
-      <Button render={<Link to="/" />} size="lg" className="rounded-full gap-2">
-        <Home size={18} />
-        Back to Home
-      </Button>
+      <Link to="/">
+        <Button size="lg" className="rounded-full gap-2">
+          <Home size={18} />
+          Back to Home
+        </Button>
+      </Link>
     </div>
   );
 }
