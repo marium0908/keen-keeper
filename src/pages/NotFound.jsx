@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
  * 404 Page - Shown when a user tries to access a route that doesn't exist.
  */
 export default function NotFound() {
+  console.log("NotFound component rendered");
   return (
     <div className="flex flex-col items-center justify-center min-h-[60vh] text-center space-y-6">
       {/* Big Search Icon to show something is missing */}
