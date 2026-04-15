@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Plus, Users, Clock, Calendar, CheckCircle2, Loader2 } from 'lucide-react';
-import { motion } from 'motion/react';
 
 // UI Components from our shared library
 import { Button } from '@/components/ui/button';
@@ -73,27 +72,19 @@ const Banner = ({ onFriendAdded }) => {
 
   return (
     <div className="text-center py-16 md:py-24 space-y-6 bg-background">
-      <motion.h1 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-4xl md:text-5xl font-bold tracking-tight text-primary"
+      <h1 
+        className="text-4xl md:text-5xl font-bold tracking-tight text-primary animate-in fade-in slide-in-from-bottom-4 duration-700"
       >
         Friends to keep close in your life
-      </motion.h1>
-      <motion.p 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-        className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto font-medium"
+      </h1>
+      <p 
+        className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150"
       >
         Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.
-      </motion.p>
+      </p>
       
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.2 }}
-        className="pt-4"
+      <div
+        className="pt-4 animate-in fade-in zoom-in-95 duration-700 delay-300"
       >
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger render={<Button size="lg" className="rounded-md gap-2 px-8" />}>
@@ -144,7 +135,7 @@ const Banner = ({ onFriendAdded }) => {
             </DialogFooter>
           </DialogContent>
         </Dialog>
-      </motion.div>
+      </div>
     </div>
   );
 };
@@ -167,11 +158,10 @@ const SummaryCards = ({ friends }) => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 container mx-auto px-4 lg:px-8">
       {stats.map((stat, i) => (
-        <motion.div
+        <div
           key={stat.label}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 + i * 0.1 }}
+          className="animate-in fade-in slide-in-from-bottom-4 duration-500"
+          style={{ animationDelay: `${300 + i * 100}ms` }}
         >
           <Card className="border border-muted/30 shadow-sm rounded-xl">
             <CardContent className="p-8 flex flex-col items-center text-center gap-1">
@@ -179,7 +169,7 @@ const SummaryCards = ({ friends }) => {
               <div className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">{stat.label}</div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       ))}
     </div>
   );
@@ -197,10 +187,7 @@ const FriendCard = ({ friend }) => {
 
   return (
     <Link to={`/friend/${friend.id}`}>
-      <motion.div
-        whileHover={{ y: -4 }}
-        transition={{ type: 'spring', stiffness: 300 }}
-      >
+      <div className="hover:-translate-y-1 transition-transform duration-300 h-full">
         <Card className="overflow-hidden h-full border border-muted/30 shadow-sm hover:shadow-md transition-all rounded-xl">
           <CardContent className="p-8 flex flex-col items-center text-center space-y-4">
             <Avatar className="h-20 w-20 border-2 border-muted/10">
@@ -228,7 +215,7 @@ const FriendCard = ({ friend }) => {
             </Badge>
           </CardContent>
         </Card>
-      </motion.div>
+      </div>
     </Link>
   );
 };
@@ -239,6 +226,7 @@ const FriendCard = ({ friend }) => {
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [friends, setFriends] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Load friends on mount
   useEffect(() => {
@@ -254,6 +242,11 @@ export default function Home() {
       setLoading(false);
     }, 600);
   };
+
+  // Filter friends based on search query
+  const filteredFriends = friends.filter(friend => 
+    friend.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   if (loading) {
     return (
@@ -274,17 +267,34 @@ export default function Home() {
       
       {/* The Friend Shelf */}
       <section className="container mx-auto px-4 lg:px-8 space-y-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <h2 className="text-xl font-bold tracking-tight text-primary">Your Friends</h2>
+          <div className="relative w-full md:w-72">
+            <Input 
+              placeholder="Search friends..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-4 pr-10 h-10 rounded-lg border-muted/30 focus:border-primary/50"
+            />
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+              <Users size={16} />
+            </div>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {friends.map((friend) => (
+          {filteredFriends.map((friend) => (
             <div key={friend.id}>
               <FriendCard friend={friend} />
             </div>
           ))}
         </div>
+
+        {filteredFriends.length === 0 && friends.length > 0 && (
+          <div className="text-center py-12 border-2 border-dashed rounded-xl border-muted/30">
+            <p className="text-muted-foreground">No friends found matching "{searchQuery}"</p>
+          </div>
+        )}
 
         {friends.length === 0 && (
           <div className="text-center py-12 border-2 border-dashed rounded-xl border-muted/30">
