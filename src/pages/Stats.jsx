@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-import { motion } from 'motion/react';
 
 // UI Components
 import { Card, CardContent, CardHeader, CardDescription } from '@/components/ui/card';
