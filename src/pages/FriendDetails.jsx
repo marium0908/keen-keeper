@@ -1,11 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { 
   ArrowLeft, Clock, Calendar, Target, Phone, MessageSquare, Video, 
   Moon, Archive, Trash2, Edit2, Mail, Info, Loader2
 } from 'lucide-react';
-import { motion } from 'motion/react';
 import { toast } from 'sonner';
 
 // UI Components
@@ -115,9 +113,11 @@ export default function FriendDetails() {
   const handleDelete = () => {
     if (!friend) return;
     
-    if (window.confirm(`Are you sure you want to remove ${friend.name} from your shelf?`)) {
+    // Using a simple confirm for now, but making it more robust
+    const confirmed = window.confirm(`Are you sure you want to remove ${friend.name} from your shelf?`);
+    if (confirmed) {
       deleteFriend(friend.id);
-      toast.success(`${friend.name} removed`);
+      toast.success(`${friend.name} removed from your shelf`);
       navigate('/');
     }
   };
@@ -285,7 +285,19 @@ export default function FriendDetails() {
                   variant="outline"
                   className="flex-col h-32 gap-3 rounded-xl border-muted/30 hover:border-primary/50 hover:bg-primary/5 transition-all"
                 >
-                  <img src="/assets/call.png" alt="Call" className="h-8 w-8 object-contain" referrerPolicy="no-referrer" />
+                  <div className="flex items-center justify-center h-10 w-10">
+                    <img 
+                      src="/assets/call.png" 
+                      alt="Call" 
+                      className="h-8 w-8 object-contain" 
+                      referrerPolicy="no-referrer" 
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <Phone className="hidden text-primary" size={24} />
+                  </div>
                   <span className="font-bold text-xs uppercase tracking-widest">Call</span>
                 </Button>
                 <Button 
@@ -293,7 +305,19 @@ export default function FriendDetails() {
                   variant="outline"
                   className="flex-col h-32 gap-3 rounded-xl border-muted/30 hover:border-primary/50 hover:bg-primary/5 transition-all"
                 >
-                  <img src="/assets/text.png" alt="Text" className="h-8 w-8 object-contain" referrerPolicy="no-referrer" />
+                  <div className="flex items-center justify-center h-10 w-10">
+                    <img 
+                      src="/assets/text.png" 
+                      alt="Text" 
+                      className="h-8 w-8 object-contain" 
+                      referrerPolicy="no-referrer" 
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <MessageSquare className="hidden text-primary" size={24} />
+                  </div>
                   <span className="font-bold text-xs uppercase tracking-widest">Text</span>
                 </Button>
                 <Button 
@@ -301,7 +325,19 @@ export default function FriendDetails() {
                   variant="outline"
                   className="flex-col h-32 gap-3 rounded-xl border-muted/30 hover:border-primary/50 hover:bg-primary/5 transition-all"
                 >
-                  <img src="/assets/video.png" alt="Video" className="h-8 w-8 object-contain" referrerPolicy="no-referrer" />
+                  <div className="flex items-center justify-center h-10 w-10">
+                    <img 
+                      src="/assets/video.png" 
+                      alt="Video" 
+                      className="h-8 w-8 object-contain" 
+                      referrerPolicy="no-referrer" 
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'block';
+                      }}
+                    />
+                    <Video className="hidden text-primary" size={24} />
+                  </div>
                   <span className="font-bold text-xs uppercase tracking-widest">Video</span>
                 </Button>
               </div>
