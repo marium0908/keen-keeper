@@ -18,13 +18,13 @@ const InteractionIcon = ({ type, size = 24 }) => {
   
   switch (type) {
     case 'Call': 
-      return <img src="/src/assets/call.png" alt="Call" className={iconClass} referrerPolicy="no-referrer" />;
+      return <img src="/assets/call.png" alt="Call" className={iconClass} referrerPolicy="no-referrer" />;
     case 'Text': 
-      return <img src="/src/assets/text.png" alt="Text" className={iconClass} referrerPolicy="no-referrer" />;
+      return <img src="/assets/text.png" alt="Text" className={iconClass} referrerPolicy="no-referrer" />;
     case 'Video': 
-      return <img src="/src/assets/video.png" alt="Video" className={iconClass} referrerPolicy="no-referrer" />;
+      return <img src="/assets/video.png" alt="Video" className={iconClass} referrerPolicy="no-referrer" />;
     case 'Meetup': 
-      return <Users size={size} className="text-[#FFA500] fill-[#f59e0b]/10" />;
+      return <Users size={size} className="text-[#f59e0b] fill-[#f59e0b]/10" />;
     default: 
       return null;
   }
