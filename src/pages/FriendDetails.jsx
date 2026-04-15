@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { 
@@ -284,7 +285,7 @@ export default function FriendDetails() {
                   variant="outline"
                   className="flex-col h-32 gap-3 rounded-xl border-muted/30 hover:border-primary/50 hover:bg-primary/5 transition-all"
                 >
-                  <img src="/src/assets/call.png" alt="Call" className="h-8 w-8 object-contain" referrerPolicy="no-referrer" />
+                  <img src="/assets/call.png" alt="Call" className="h-8 w-8 object-contain" referrerPolicy="no-referrer" />
                   <span className="font-bold text-xs uppercase tracking-widest">Call</span>
                 </Button>
                 <Button 
@@ -292,7 +293,7 @@ export default function FriendDetails() {
                   variant="outline"
                   className="flex-col h-32 gap-3 rounded-xl border-muted/30 hover:border-primary/50 hover:bg-primary/5 transition-all"
                 >
-                  <img src="/src/assets/text.png" alt="Text" className="h-8 w-8 object-contain" referrerPolicy="no-referrer" />
+                  <img src="/assets/text.png" alt="Text" className="h-8 w-8 object-contain" referrerPolicy="no-referrer" />
                   <span className="font-bold text-xs uppercase tracking-widest">Text</span>
                 </Button>
                 <Button 
@@ -300,7 +301,7 @@ export default function FriendDetails() {
                   variant="outline"
                   className="flex-col h-32 gap-3 rounded-xl border-muted/30 hover:border-primary/50 hover:bg-primary/5 transition-all"
                 >
-                  <img src="/src/assets/video.png" alt="Video" className="h-8 w-8 object-contain" referrerPolicy="no-referrer" />
+                  <img src="/assets/video.png" alt="Video" className="h-8 w-8 object-contain" referrerPolicy="no-referrer" />
                   <span className="font-bold text-xs uppercase tracking-widest">Video</span>
                 </Button>
               </div>
