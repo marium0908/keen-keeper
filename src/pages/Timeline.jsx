@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, Filter, Trash2, Users } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { Clock, Filter, Trash2, Users, Phone, MessageSquare, Video } from 'lucide-react';
 
 // UI Components
 import { Button } from '@/components/ui/button';
@@ -18,11 +17,53 @@ const InteractionIcon = ({ type, size = 24 }) => {
   
   switch (type) {
     case 'Call': 
-      return <img src="/assets/call.png" alt="Call" className={iconClass} referrerPolicy="no-referrer" />;
+      return (
+        <div className="flex items-center justify-center">
+          <img 
+            src="/assets/call.png" 
+            alt="Call" 
+            className={iconClass} 
+            referrerPolicy="no-referrer" 
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <Phone className="hidden text-primary" size={size - 4} />
+        </div>
+      );
     case 'Text': 
-      return <img src="/assets/text.png" alt="Text" className={iconClass} referrerPolicy="no-referrer" />;
+      return (
+        <div className="flex items-center justify-center">
+          <img 
+            src="/assets/text.png" 
+            alt="Text" 
+            className={iconClass} 
+            referrerPolicy="no-referrer" 
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <MessageSquare className="hidden text-primary" size={size - 4} />
+        </div>
+      );
     case 'Video': 
-      return <img src="/assets/video.png" alt="Video" className={iconClass} referrerPolicy="no-referrer" />;
+      return (
+        <div className="flex items-center justify-center">
+          <img 
+            src="/assets/video.png" 
+            alt="Video" 
+            className={iconClass} 
+            referrerPolicy="no-referrer" 
+            onError={(e) => {
+              e.target.style.display = 'none';
+              e.target.nextSibling.style.display = 'block';
+            }}
+          />
+          <Video className="hidden text-primary" size={size - 4} />
+        </div>
+      );
     case 'Meetup': 
       return <Users size={size} className="text-[#f59e0b] fill-[#f59e0b]/10" />;
     default: 
@@ -91,33 +132,29 @@ export default function Timeline() {
       </div>
 
       <div className="space-y-2">
-        <AnimatePresence mode="popLayout">
-          {filteredTimeline.map((entry, index) => (
-            <motion.div
-              key={entry.id}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.98 }}
-              transition={{ delay: index * 0.02 }}
-            >
-              <Card className="border border-muted/10 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-all rounded-md overflow-hidden">
-                <CardContent className="p-4 flex items-center gap-6">
-                  <div className="flex items-center justify-center shrink-0">
-                    <InteractionIcon type={entry.type} size={28} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-[15px] text-muted-foreground truncate">
-                      <span className="font-bold text-[#1a4731]">{entry.type}</span> with {entry.friendName}
-                    </h3>
-                    <p className="text-[13px] font-medium text-muted-foreground/70">
-                      {entry.date}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+        {filteredTimeline.map((entry, index) => (
+          <div
+            key={entry.id}
+            className="animate-in fade-in slide-in-from-bottom-2 duration-300"
+            style={{ animationDelay: `${index * 30}ms` }}
+          >
+            <Card className="border border-muted/10 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)] hover:shadow-md transition-all rounded-md overflow-hidden">
+              <CardContent className="p-4 flex items-center gap-6">
+                <div className="flex items-center justify-center shrink-0">
+                  <InteractionIcon type={entry.type} size={28} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-[15px] text-muted-foreground truncate">
+                    <span className="font-bold text-[#1a4731]">{entry.type}</span> with {entry.friendName}
+                  </h3>
+                  <p className="text-[13px] font-medium text-muted-foreground/70">
+                    {entry.date}
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        ))}
 
         {/* Empty State */}
         {filteredTimeline.length === 0 && (
