@@ -74,7 +74,7 @@ const Footer = () => {
 
           {/* Social Media Links */}
           <div className="space-y-4">
-            <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#f59e0b]">Social Links</h3>
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ffffff]">Social Links</h3>
             <div className="flex items-center justify-center gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#1a4731] hover:bg-white/90 transition-all">
                 <Instagram size={20} />
