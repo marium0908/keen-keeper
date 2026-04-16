@@ -9,9 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { getTimeline, clearTimeline } from '@/lib/storage';
 import { cn } from '@/lib/utils';
 
-/**
- * Helper to show the right icon for each interaction.
- */
+// Helper to show the right icon for each interaction
 const InteractionIcon = ({ type, size = 24 }) => {
   const iconClass = cn("object-contain", size === 24 ? "h-6 w-6" : "h-7 w-7");
   
@@ -71,9 +69,7 @@ const InteractionIcon = ({ type, size = 24 }) => {
   }
 };
 
-/**
- * Timeline Page - Shows a chronological list of all interactions.
- */
+// Timeline Page - Shows a list of all interactions
 export default function Timeline() {
   const [timeline, setTimeline] = useState([]);
   const [filter, setFilter] = useState('All');
