@@ -7,9 +7,7 @@ import { Card, CardContent, CardHeader, CardDescription } from '@/components/ui/
 // Data and Helpers
 import { getTimeline } from '@/lib/storage';
 
-/**
- * Stats Page - Shows analytics about friend interactions.
- */
+// Stats Page - Shows analytics about friend interactions
 export default function Stats() {
   const [timeline, setTimeline] = useState([]);
 
