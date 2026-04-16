@@ -9,10 +9,8 @@ import Timeline from './pages/Timeline';
 import Stats from './pages/Stats';
 import NotFound from './pages/NotFound';
 
-/**
- * Main App Component
- * We use React Router for navigation and a global Layout for the Navbar/Footer.
- */
+// Main App Component
+// We use React Router for navigation and a global Layout for the Navbar/Footer.
 export default function App() {
   return (
     <BrowserRouter>
