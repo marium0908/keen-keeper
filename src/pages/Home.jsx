@@ -26,10 +26,7 @@ import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { getFriends, saveFriend } from '@/lib/storage';
 
-/**
- * Banner section at the top of the Home page.
- * Includes the "Add Friend" dialog logic.
- */
+// Top banner with the Add Friend button
 const Banner = ({ onFriendAdded }) => {
   // Local state for the new friend form
   const [name, setName] = useState('');
@@ -140,9 +137,7 @@ const Banner = ({ onFriendAdded }) => {
   );
 };
 
-/**
- * Small summary cards showing quick stats.
- */
+// Small cards at the top showing quick stats
 const SummaryCards = ({ friends }) => {
   // Calculate some basic stats for the user
   const onTrackCount = friends.filter(f => f.status === 'on-track').length;
@@ -175,9 +170,7 @@ const SummaryCards = ({ friends }) => {
   );
 };
 
-/**
- * Individual friend card component.
- */
+// Component for each individual friend card
 const FriendCard = ({ friend }) => {
   const statusColors = {
     'overdue': 'bg-destructive text-destructive-foreground',
@@ -220,9 +213,7 @@ const FriendCard = ({ friend }) => {
   );
 };
 
-/**
- * Main Home Page component.
- */
+// Main Home Page
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [friends, setFriends] = useState([]);
@@ -235,12 +226,12 @@ export default function Home() {
 
   const loadFriendsData = () => {
     setLoading(true);
-    // Simulate a small delay for that "real app" feel
+    // Add a small delay so it looks like it's fetching from an API
     setTimeout(() => {
       const data = getFriends();
       setFriends(data);
       setLoading(false);
-    }, 600);
+    }, 800);
   };
 
   // Filter friends based on search query
