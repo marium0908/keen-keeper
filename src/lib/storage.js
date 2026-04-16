@@ -1,22 +1,19 @@
 import initialFriends from '@/data/friends.json';
 
-// Keys used for local storage
+// Keys for localStorage
 const TIMELINE_KEY = 'keenkeeper_timeline';
 const FRIENDS_KEY = 'keenkeeper_friends';
 
-/**
- * --- Timeline Storage Logic ---
- * We use this to keep track of every call, text, or video chat.
- */
+// --- TIMELINE FUNCTIONS ---
+// This handles all the call/text/video logs
 
-// Get all timeline entries from local storage
+// Get all timeline entries
 export const getTimeline = () => {
   const stored = localStorage.getItem(TIMELINE_KEY);
   if (!stored) return [];
   try {
     return JSON.parse(stored);
   } catch (e) {
-    console.error('Failed to parse timeline from localStorage', e);
     return [];
   }
 };
@@ -44,10 +41,8 @@ export const clearTimeline = () => {
   localStorage.removeItem(TIMELINE_KEY);
 };
 
-/**
- * --- Friends Storage Logic ---
- * We use this to manage our "shelf" of friends.
- */
+// --- FRIEND FUNCTIONS ---
+// This handles our list of friends
 
 // Get the list of friends. If it's the first time, we load from the JSON file.
 export const getFriends = () => {
@@ -96,10 +91,8 @@ export const deleteFriend = (id) => {
   localStorage.setItem(TIMELINE_KEY, JSON.stringify(updatedTimeline));
 };
 
-/**
- * Helper function to recalculate how many days it's been since we last talked.
- * This runs every time a new interaction is logged.
- */
+// Update how many days it's been since we talked
+// This runs every time we add a new interaction
 const updateFriendLastContact = (friendId) => {
   const friends = getFriends();
   const friend = friends.find(f => f.id === friendId);
