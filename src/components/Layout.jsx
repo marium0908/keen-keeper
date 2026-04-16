@@ -3,9 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Home, Clock, BarChart3, Users, Instagram, Facebook, Twitter } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-/**
- * Navbar component with navigation links and active state highlighting.
- */
+// Navbar component with navigation links and active state highlighting
 const Navbar = () => {
   const location = useLocation();
 
@@ -26,6 +24,10 @@ const Navbar = () => {
             alt="KeenKeeper Logo" 
             className="h-10 w-auto object-contain"
             referrerPolicy="no-referrer"
+            onError={(e) => {
+              // Fallback if the logo is missing
+              e.target.src = "https://picsum.photos/seed/keenkeeper/200/200";
+            }}
           />
         </Link>
 
@@ -56,9 +58,7 @@ const Navbar = () => {
   );
 };
 
-/**
- * Footer component with social links and legal info.
- */
+// Footer component with social links and legal info
 const Footer = () => {
   return (
     <footer className="w-full bg-[#1a4731] text-white pt-20 pb-10">
@@ -74,7 +74,7 @@ const Footer = () => {
 
           {/* Social Media Links */}
           <div className="space-y-4">
-            <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#ffffff]">Social Links</h3>
+            <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#f59e0b]">Social Links</h3>
             <div className="flex items-center justify-center gap-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#1a4731] hover:bg-white/90 transition-all">
                 <Instagram size={20} />
@@ -103,9 +103,7 @@ const Footer = () => {
   );
 };
 
-/**
- * Main Layout wrapper for the entire app.
- */
+// Main Layout wrapper for the entire app
 export const Layout = ({ children }) => {
   return (
     <div className="flex min-h-screen flex-col bg-background">
