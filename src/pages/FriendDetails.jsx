@@ -29,10 +29,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { addTimelineEntry, getFriends, saveFriend, deleteFriend } from '@/lib/storage';
 import { cn } from '@/lib/utils';
 
-/**
- * Detailed view for a single friend.
- * Allows logging interactions, editing goals, and deleting.
- */
+// Friend Details Page
+// This page shows everything about a single friend
 export default function FriendDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -57,9 +55,7 @@ export default function FriendDetails() {
     setLoading(false);
   }, [id]);
 
-  /**
-   * Logs a new interaction (Call, Text, Video)
-   */
+  // Logs a new interaction (Call, Text, Video)
   const handleCheckIn = (type) => {
     if (!friend) return;
 
@@ -88,9 +84,7 @@ export default function FriendDetails() {
     });
   };
 
-  /**
-   * Updates the contact frequency goal
-   */
+  // Updates the contact frequency goal
   const handleUpdateGoal = () => {
     if (!friend) return;
     
@@ -107,9 +101,7 @@ export default function FriendDetails() {
     toast.success("Relationship goal updated!");
   };
 
-  /**
-   * Deletes the friend from the shelf
-   */
+  // Deletes the friend from the shelf
   const handleDelete = () => {
     if (!friend) return;
     
